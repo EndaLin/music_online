@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:mysql://rm-wz9tev64rou757qv5to.mysql.rds.aliyuncs.com:3306
+    username: music_online
+    password: Music_123
+    driver-class-name: com.mysql.jdbc.Driver
+
