@@ -6,6 +6,7 @@ services:
     environment:
       MYSQL_DATABASE: music_online
       MYSQL_ROOT_PASSWORD: music_online
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./docker/db:/var/lib/mysql
     restart: always
