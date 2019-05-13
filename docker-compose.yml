@@ -1,0 +1,13 @@
+version: "3.1"
+services:
+  db:
+    image: mysql:5
+    container_name: music_db
+    environment:
+      MYSQL_DATABASE: music_online
+      MYSQL_ROOT_PASSWORD: music_online
+    volumes:
+      - ./docker/db:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306

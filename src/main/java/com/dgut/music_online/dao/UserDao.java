@@ -15,6 +15,6 @@ import java.util.List;
 @Component
 public interface UserDao {
 
-    @Select("select * from user")
-    User getAllUser();
+    @Select("select * from music_online.user")
+    List<User> getAllUser();
 }

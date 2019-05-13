@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 /**
  * @Author: wt
  * @Date: 2019/5/12 9:53
@@ -20,7 +22,7 @@ public class UserManagerServiceTest {
 
     @Test
     public void test() {
-        User user = userManagerService.getAllUser();
-        System.out.println(user.toString());
+        List<User> userList = userManagerService.getAllUser();
+        System.out.println(userList.get(0).toString());
     }
 }

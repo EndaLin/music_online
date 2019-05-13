@@ -17,7 +17,7 @@ public class UserManagerService {
     @Autowired
     UserDao userDao;
 
-    public User getAllUser() {
+    public List<User> getAllUser() {
         System.out.println("enter");
         return userDao.getAllUser();
     }
