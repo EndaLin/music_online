@@ -23,6 +23,6 @@ public class UserManagerServiceTest {
     @Test
     public void test() {
         List<User> userList = userManagerService.getAllUser();
-        System.out.println(userList.get(0).toString());
+        System.out.println(userList.size());
     }
 }

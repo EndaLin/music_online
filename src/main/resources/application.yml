@@ -5,3 +5,7 @@ spring:
     password: music_online
     driver-class-name: com.mysql.jdbc.Driver
 
+mybatis:
+  typeAliasesPackage: com.dgut.music_online.dao
+  mapperLocations: classpath:/mapper/*Mapper.xml
+

@@ -8,13 +8,35 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class User {
+    /**
+     * 用户ID
+     */
     private Integer id;
-    private String name;
-    private int age;
-    private int sex;
 
-    public User() {
-    }
+    /**
+     * 用户名称
+     */
+    private String nickname;
+
+    /**
+     * 用户头像地址
+     */
+    private String avatarUrl;
+
+    /**
+     * 签名
+     */
+    private String signature;
+
+    /**
+     * 性别
+     */
+    private Integer gender;
+
+    /**
+     * 用户类型
+     */
+    private Integer userType;
 
     public Integer getId() {
         return id;
@@ -24,37 +46,55 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public int getAge() {
-        return age;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
-    public int getSex() {
-        return sex;
+    public String getSignature() {
+        return signature;
     }
 
-    public void setSex(int sex) {
-        this.sex = sex;
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", sex=" + sex +
+                ", nickname='" + nickname + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", signature='" + signature + '\'' +
+                ", gender=" + gender +
+                ", userType=" + userType +
                 '}';
     }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dgut.music_online.dao.UserDao">
+    <select id="getAllUser" resultType="String">
+            select * from music_online.user
+    </select>
+
+    <insert id="insertUser" parameterType="com.dgut.music_online.domain.User">
+        insert into music_online.user
+        values
+        (#{id}, #{nickname}, #{avatarUrl}, #{signature}, #{gender}, #(userType))
+    </insert>
+</mapper>
