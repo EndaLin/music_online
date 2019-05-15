@@ -1,5 +1,6 @@
 import com.dgut.music_online.MusicOnlineApplication;
 import com.dgut.music_online.domain.User;
+import com.dgut.music_online.service.Impl.UserManagerServiceImpl;
 import com.dgut.music_online.service.UserManagerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

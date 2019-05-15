@@ -2,6 +2,9 @@ package com.dgut.music_online.domain;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class SongList {
     /**
@@ -28,6 +31,11 @@ public class SongList {
      * 歌单封面图片地址
      */
     private String coverImgUrl;
+
+    /**
+     * 歌单下面所有歌曲的相关信息
+     */
+    private List<Song> listSong;
 
     public Integer getId() {
         return id;
@@ -69,14 +77,23 @@ public class SongList {
         this.coverImgUrl = coverImgUrl;
     }
 
+    public List<Song> getListSong() {
+        return listSong;
+    }
+
+    public void setListSong(List<Song> listSong) {
+        this.listSong = listSong;
+    }
+
     @Override
     public String toString() {
-        return "songList{" +
+        return "SongList{" +
                 "id=" + id +
                 ", creatorId=" + creatorId +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", coverImgUrl='" + coverImgUrl + '\'' +
+                ", listSong=" + listSong.toString() +
                 '}';
     }
 }

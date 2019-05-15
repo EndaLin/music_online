@@ -4,9 +4,11 @@ import com.dgut.music_online.dao.SongDao;
 import com.dgut.music_online.domain.Song;
 import com.dgut.music_online.service.SongManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SongManagerServiceImpl implements SongManagerService {
 
     @Autowired
