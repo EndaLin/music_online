@@ -41,3 +41,6 @@
 
 #### 数据源
 - [网易云API](https://zhuanlan.zhihu.com/p/30246788)
+
+#### 技术参考
+- [MyBatis 官方中文文档](http://www.mybatis.org/mybatis-3/zh/index.html)
