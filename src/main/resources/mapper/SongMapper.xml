@@ -5,8 +5,7 @@
 
 <mapper namespace="com.dgut.music_online.dao.SongDao">
     <insert id="insertSong" parameterType="com.dgut.music_online.domain.Song">
-        insert into music_online.song
-        values
-        (#{id}, #{type}, #{url}, #{signature})
+        insert into `schema`.song (id, type, url)
+        values (#{id}, #{type}, #{url})
     </insert>
 </mapper>

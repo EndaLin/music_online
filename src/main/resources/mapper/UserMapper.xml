@@ -5,12 +5,12 @@
 
 <mapper namespace="com.dgut.music_online.dao.UserDao">
     <select id="getAllUser" resultType="String">
-            select * from music_online.user
+            select * from `schema`.user
     </select>
 
     <insert id="insertUser" parameterType="com.dgut.music_online.domain.User">
-        insert into music_online.user
+        insert into `schema`.user
         values
-        (#{id}, #{nickname}, #{avatarUrl}, #{signature}, #{gender}, #(userType))
+        (#{id}, #{nickname}, #{avatarUrl}, #{signature}, #{gender}, #{userType})
     </insert>
 </mapper>

@@ -2,7 +2,6 @@ package com.dgut.music_online.domain;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -16,6 +15,11 @@ public class SongList {
      * 创建者ID
      */
     private Integer creatorId;
+
+    /**
+     * 创建者信息
+     */
+    private User user;
 
     /**
      * 歌单描述
@@ -45,12 +49,12 @@ public class SongList {
         this.id = id;
     }
 
-    public Integer getCreatorId() {
-        return creatorId;
+    public User getUser() {
+        return user;
     }
 
-    public void setCreatorId(Integer creatorId) {
-        this.creatorId = creatorId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescription() {
@@ -85,11 +89,19 @@ public class SongList {
         this.listSong = listSong;
     }
 
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+    }
+
     @Override
     public String toString() {
         return "SongList{" +
                 "id=" + id +
-                ", creatorId=" + creatorId +
+                ", user=" + user.toString() +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", coverImgUrl='" + coverImgUrl + '\'' +

@@ -14,6 +14,11 @@ public class SongListManagerServiceImpl implements SongListManagerService {
 
     @Override
     public void insertSongList(SongList songList) {
-        songListDao.insertSongList(songList);
+        songListDao.insertSongList(songList, songList.getUser().getId());
+    }
+
+    @Override
+    public void insertSongIntoSongList(Integer songListId, Integer songId) {
+        songListDao.insertSongIntoSongList(songListId, songId);
     }
 }

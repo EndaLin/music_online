@@ -6,7 +6,6 @@ import com.dgut.music_online.domain.Song;
 import com.dgut.music_online.domain.SongList;
 import com.dgut.music_online.domain.User;
 import com.dgut.music_online.service.CloudMusicManagerService;
-import org.apache.ibatis.annotations.Insert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -36,7 +35,10 @@ public class CloudMusicManagerServiceImpl implements CloudMusicManagerService {
          * all
          */
         JSONObject detail = restTemplate.getForObject(url, JSONObject.class);
-        logger.info(detail.toJSONString());
+
+        if (detail.getString("code") == null || "404".equals(detail.getString("code"))) {
+            return null;
+        }
 
         /**
          * playlist 封装歌单以及创建者信息
@@ -58,7 +60,7 @@ public class CloudMusicManagerServiceImpl implements CloudMusicManagerService {
         songList.setName(name);
         songList.setCoverImgUrl(coverImgUrl);
         songList.setDescription(description);
-        songList.setCreatorId(user.getId());
+        songList.setUser(user);
 
         /**
          * privileges 封装歌单下面每一首歌的ID

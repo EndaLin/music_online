@@ -4,9 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dgut.music_online.dao.SongListDao">
-    <insert id="insertSongList" parameterType="com.dgut.music_online.domain.SongList">
-        insert into music_online.song
+    <insert id="insertSongList">
+        insert into `schema`.songList (id, creatorId, description, name, coverImgUrl)
         values
-        (#{id}, #{creatorId}, #{description}, #{name}, #{coverImgUrl})
+        (#{songList.id}, #{creatorId}, #{songList.description}, #{songList.name}, #{songList.coverImgUrl})
+    </insert>
+
+    <insert id="insertSongIntoSongList">
+            insert into `schema`.songAndSongList (songListId, songId)
+            values
+            (#{songListId}, #{songId})
     </insert>
 </mapper>
