@@ -25,5 +25,5 @@ public interface UserDao {
     /**
      * 新增用户
      */
-    void insertUser();
+    void insertUser(User user);
 }
