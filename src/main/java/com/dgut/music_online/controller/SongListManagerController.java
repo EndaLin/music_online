@@ -42,19 +42,19 @@ public class SongListManagerController {
         return detail;
     }
 
-    @ApiOperation("创建歌单")
+    @ApiOperation("创建歌单(后台)")
     @PostMapping(value = "songList")
     public Detail insertSongList() {
         return null;
     }
 
-    @ApiOperation("根据歌单ID修改歌单信息")
+    @ApiOperation("根据歌单ID修改歌单信息（后台）")
     @PutMapping(value = "/songList/{id}")
     public Detail updateSongList(@PathVariable("id")Integer id) {
         return null;
     }
 
-    @ApiOperation("根据歌单ID删除歌单")
+    @ApiOperation("根据歌单ID删除歌单（后台）")
     @DeleteMapping(value = "/songList/{id}")
     public Detail deleteSongListById(@PathVariable("id")Integer id) {
         return null;
