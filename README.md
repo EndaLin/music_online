@@ -36,7 +36,7 @@
 #### API设计规范
 > - [RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
 
-#### API文档
+#### API文档(http://localhost:8080/swagger-ui.html )
 > - [在 Spring Boot 项目中使用 Swagger 文档](https://www.ibm.com/developerworks/cn/java/j-using-swagger-in-a-spring-boot-project/index.html)
 
 #### 相关文档
