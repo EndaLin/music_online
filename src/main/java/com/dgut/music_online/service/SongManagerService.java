@@ -14,4 +14,14 @@ public interface SongManagerService {
      * 批量插入歌曲信息
      */
     void insertSongsInBulk(List<Song> songs);
+
+    /**
+     * 获取所有歌曲信息
+     */
+    List<Song> getAllSongs();
+
+    /**
+     * 根据歌曲ID获取歌曲信息
+     */
+    Song getSongById(Integer id);
 }

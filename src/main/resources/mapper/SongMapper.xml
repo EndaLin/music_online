@@ -8,4 +8,18 @@
         insert into `schema`.song (id, type, url)
         values (#{id}, #{type}, #{url})
     </insert>
+
+    <resultMap id="songResultMap" type="com.dgut.music_online.domain.Song">
+        <id property="id" column="id" />
+        <result property="type" column="type"/>
+        <result property="url" column="url"/>
+    </resultMap>
+
+    <select id="getAllSongs" resultMap="songResultMap">
+         select * from `schema`.song
+    </select>
+
+    <select id="getSongById" parameterType="int" resultType="com.dgut.music_online.domain.Song">
+        select * from `schema`.song where id = #{id}
+    </select>
 </mapper>

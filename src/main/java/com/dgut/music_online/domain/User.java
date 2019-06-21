@@ -1,5 +1,6 @@
 package com.dgut.music_online.domain;
 
+import io.swagger.annotations.ApiModel;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2019/5/12 9:38
  */
 @Component
+@ApiModel("用户信息实体")
 public class User {
     /**
      * 用户ID

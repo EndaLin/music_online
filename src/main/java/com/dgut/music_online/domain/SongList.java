@@ -1,10 +1,13 @@
 package com.dgut.music_online.domain;
 
+import io.swagger.annotations.ApiModel;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@ApiModel("歌单信息实体")
 public class SongList {
     /**
      * 歌单ID
@@ -39,7 +42,7 @@ public class SongList {
     /**
      * 歌单下面所有歌曲的相关信息
      */
-    private List<Song> listSong;
+    private List<Song> listSong = new ArrayList<>();
 
     public Integer getId() {
         return id;

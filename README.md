@@ -33,6 +33,12 @@
 > - Spring Boot
 > - MyBatis
 
+#### API设计规范
+> - [RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+
+#### API文档
+> - [在 Spring Boot 项目中使用 Swagger 文档](https://www.ibm.com/developerworks/cn/java/j-using-swagger-in-a-spring-boot-project/index.html)
+
 #### 相关文档
 - [系统设计说明书](https://shimo.im/docs/XHUBDhY5mvU0ud3x/)
 - [需求规格说明书](https://shimo.im/docs/prs9JQQDFe48Ltl6/)

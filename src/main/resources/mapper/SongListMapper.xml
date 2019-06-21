@@ -15,4 +15,47 @@
             values
             (#{songListId}, #{songId})
     </insert>
+
+    <resultMap id="songListResultMap" type="com.dgut.music_online.domain.SongList">
+        <id property="id" column="id"/>
+        <result property="user.id" column="creatorId"/>
+        <result property="description" column="description"/>
+        <result property="name" column="name"/>
+        <result property="coverImgUrl" column="coverImgUrl"/>
+    </resultMap>
+
+
+    <select id="getAllSongLists" resultMap="songListResultMap">
+        select * from `schema`.songList
+    </select>
+
+
+    <resultMap id="songListResultMapById" type="com.dgut.music_online.domain.SongList">
+        <id property="id" column="id"/>
+        <result property="description" column="description"/>
+        <result property="name" column="name"/>
+        <result property="coverImgUrl" column="coverImgUrl"/>
+        <association property="user" javaType="com.dgut.music_online.domain.User">
+            <id property="id" column="creatorId"/>
+            <result property="nickname" column="nickname"/>
+            <result property="avatarUrl" column="avatarUrl"/>
+            <result property="signature" column="signature"/>
+            <result property="gender" column="gender"/>
+            <result property="userType" column="userType"/>
+        </association>
+        <collection property="listSong" ofType="com.dgut.music_online.domain.Song">
+            <id property="id" column="songId"/>
+            <result property="type" column="type"/>
+            <result property="url" column="url"/>
+        </collection>
+    </resultMap>
+
+    <select id="getSongListById" parameterType="int" resultMap="songListResultMapById">
+        select *
+        from `schema`.songList, `schema`.songAndSongList, `schema`.song, `schema`.user
+        where songList.id like #{id}
+              and songList.creatorId like user.id
+              and songList.id like  songAndSongList.songListId
+              and songAndSongList.songId like songId
+    </select>
 </mapper>

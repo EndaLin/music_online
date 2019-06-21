@@ -1,8 +1,10 @@
 package com.dgut.music_online.domain;
 
+import io.swagger.annotations.ApiModel;
 import org.springframework.stereotype.Component;
 
 @Component
+@ApiModel("歌曲信息实体")
 public class Song {
     /**
      * 歌曲ID

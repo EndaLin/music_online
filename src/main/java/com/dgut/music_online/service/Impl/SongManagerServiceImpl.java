@@ -25,4 +25,14 @@ public class SongManagerServiceImpl implements SongManagerService {
             songDao.insertSong(song);
         }
     }
+
+    @Override
+    public List<Song> getAllSongs() {
+        return songDao.getAllSongs();
+    }
+
+    @Override
+    public Song getSongById(Integer id) {
+        return songDao.getSongById(id);
+    }
 }

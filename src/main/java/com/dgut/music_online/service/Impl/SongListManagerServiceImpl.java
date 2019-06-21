@@ -6,6 +6,8 @@ import com.dgut.music_online.service.SongListManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SongListManagerServiceImpl implements SongListManagerService {
 
@@ -20,5 +22,16 @@ public class SongListManagerServiceImpl implements SongListManagerService {
     @Override
     public void insertSongIntoSongList(Integer songListId, Integer songId) {
         songListDao.insertSongIntoSongList(songListId, songId);
+    }
+
+    @Override
+    public List<SongList> getAllSongLists() {
+        return songListDao.getAllSongLists();
+    }
+
+    @Override
+    public SongList getSongListById(Integer id) {
+        SongList songList = songListDao.getSongListById(id);
+        return songList;
     }
 }
