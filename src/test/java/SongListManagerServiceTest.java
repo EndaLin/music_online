@@ -32,4 +32,24 @@ public class SongListManagerServiceTest {
         SongList songList = songListManagerService.getSongListById(309390784);
         System.out.println(songList);
     }
+
+    @Test
+    public void getSongListByPages(){
+        List<SongList> songLists = songListManagerService.getSongListByPages(0);
+        System.out.println(songLists);
+    }
+
+    @Test
+    public void updateSongList(){
+        SongList songList = new SongList();
+        songList.setId(309390798);
+        songList.setName("测试修改");
+        songList.setDescription("测试描述");
+        songListManagerService.updateSongList(songList);
+    }
+
+    @Test
+    public void deleteSongListById(){
+        songListManagerService.deleteSongListById(309390800);
+    }
 }

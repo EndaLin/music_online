@@ -15,10 +15,17 @@
             values
             (#{songListId}, #{songId})
     </insert>
-
+    <update id="updateSongList">
+        update `schema`.songList set name = #{songList.name}, description = #{songList.description}
+        where id = #{songList.id}
+    </update>
+    <delete id="deleteSongListById">
+        delete from `schema`.songList where id = #{id}
+    </delete>
     <resultMap id="songListResultMap" type="com.dgut.music_online.domain.SongList">
         <id property="id" column="id"/>
         <result property="user.id" column="creatorId"/>
+        <result property="creatorId" column="creatorId"/>
         <result property="description" column="description"/>
         <result property="name" column="name"/>
         <result property="coverImgUrl" column="coverImgUrl"/>
@@ -29,6 +36,9 @@
         select * from `schema`.songList
     </select>
 
+    <select id="getSongListByPages" resultMap="songListResultMap">
+        select * from `schema`.songList limit #{pages}, #{number}
+    </select>
 
     <resultMap id="songListResultMapById" type="com.dgut.music_online.domain.SongList">
         <id property="id" column="id"/>

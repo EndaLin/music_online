@@ -21,6 +21,19 @@ public class Song {
      */
     private String url;
 
+    /**
+     * 歌曲名称
+     */
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -51,6 +64,7 @@ public class Song {
                 "id=" + id +
                 ", type='" + type + '\'' +
                 ", url='" + url + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

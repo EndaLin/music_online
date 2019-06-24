@@ -24,4 +24,17 @@ public interface SongManagerService {
      * 根据歌曲ID获取歌曲信息
      */
     Song getSongById(Integer id);
+
+    /**
+     * 通过页数获取一页歌曲
+     * @param pages 页数，一页30 条数据
+     * @return 一个链表歌曲
+     */
+    List<Song> getSongsByPages(int pages);
+
+    /**
+     * 根据歌曲id 删除歌曲
+     * @param id 匹配歌曲的唯一标识符
+     */
+    void deleteSongById(Integer id);
 }
