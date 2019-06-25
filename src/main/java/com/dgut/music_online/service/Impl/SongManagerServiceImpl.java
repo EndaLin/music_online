@@ -35,4 +35,15 @@ public class SongManagerServiceImpl implements SongManagerService {
     public Song getSongById(Integer id) {
         return songDao.getSongById(id);
     }
+
+    @Override
+    public List<Song> getSongsByPages(int pages) {
+        // 一页30条歌曲
+        return songDao.getSongsByPages(pages*30, 30);
+    }
+
+    @Override
+    public void deleteSongById(Integer id) {
+        songDao.deleteSongById(id);
+    }
 }

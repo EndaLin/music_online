@@ -4,7 +4,11 @@ spring:
     username: root
     password: music_online
     driver-class-name: com.mysql.jdbc.Driver
-
+  # 配置文件上传
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 mybatis:
   typeAliasesPackage: com.dgut.music_online.dao
   mapperLocations: classpath:/mapper/*Mapper.xml

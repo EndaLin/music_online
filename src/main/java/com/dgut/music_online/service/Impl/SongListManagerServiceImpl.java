@@ -6,6 +6,7 @@ import com.dgut.music_online.service.SongListManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -16,7 +17,7 @@ public class SongListManagerServiceImpl implements SongListManagerService {
 
     @Override
     public void insertSongList(SongList songList) {
-        songListDao.insertSongList(songList, songList.getUser().getId());
+        songListDao.insertSongList(songList, songList.getCreatorId());
     }
 
     @Override
@@ -33,5 +34,21 @@ public class SongListManagerServiceImpl implements SongListManagerService {
     public SongList getSongListById(Integer id) {
         SongList songList = songListDao.getSongListById(id);
         return songList;
+    }
+
+    @Override
+    public List<SongList> getSongListByPages(int pages) {
+        List<SongList> songLists = songListDao.getSongListByPages(pages*30,30);
+        return songLists;
+    }
+
+    @Override
+    public void updateSongList(SongList songList) {
+        songListDao.updateSongList(songList);
+    }
+
+    @Override
+    public void deleteSongListById(Integer id) {
+        songListDao.deleteSongListById(id);
     }
 }

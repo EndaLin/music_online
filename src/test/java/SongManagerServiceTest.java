@@ -32,4 +32,17 @@ public class SongManagerServiceTest {
     public void getSong() {
         logger.info(songManagerService.getSongById(Integer.valueOf(252479)).toString());
     }
+
+    @Test
+    public void getSongsByPages(){
+        List<Song> songs = songManagerService.getSongsByPages(0);
+        for (Song song: songs){
+            logger.info(song.toString());
+        }
+    }
+
+    @Test
+    public void deleteSongById(){
+        songManagerService.deleteSongById(35504050);
+    }
 }
