@@ -1457,17 +1457,18 @@ nav.fixed ul .search_box .hot_search>div.open {
 /*最新歌曲推荐 开始*/
 
 .songs_rcmd_title {
-	width: 1180px;
+	width: 700px;
 	height: 35px;
 	margin: 35px auto 0;
 	box-shadow: 0px 1px 2px #c5c5c5;
 	/*border-top:1px solid #efefef;*/
+	font-size: 150%;
 }
 
 /*标题*/
 
 .rcmd_title {
-	width: 390px;
+	width: 700px;
 	height: 35px;
 	float: left;
 	background: #35303073;
@@ -1551,7 +1552,7 @@ nav.fixed ul .search_box .hot_search>div.open {
 /*歌曲推荐 内容部分*/
 
 .songs_rcmd {
-	width: 1180px;
+	width: 700px;
 	height: 430px;
 	/*background:rgb(237,237,237);*/
 	background-color: #1f16164a;
@@ -1574,10 +1575,9 @@ nav.fixed ul .search_box .hot_search>div.open {
 }
 
 ul.rcmd_cont {
-	width: 394px;
+	width: 58%;
 	height: 100%;
-	border-right: 1px solid rgba(0, 0, 0, .3);
-	float: left;
+	font-size: 150%;
 }
 
 ul.rcmd_right {
@@ -1944,30 +1944,23 @@ ul.rcmd_cont li i.third_place {
 	position: relative;
 	left: 0;
 	top: 0;
-	background: url(../images/flag.jpg) no-repeat 789px 35px;
 }
 
-.footer_cont_left {
-	width: 780px;
-	height: 80px;
-	margin-top: 15px;
-	float: left;
-}
 
-.footer_cont_left p {
+.footer_cont p {
 	width: 100%;
 	height: 35px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 16px;
 	padding-top: 5px;
 	color: #a29797;
 }
 
-.footer_cont_left a {
+.footer_cont a {
 	color: #98598d;
 }
 
-.footer_cont_left p:first-child a {
+.footer_cont p:first-child a {
 	width: 70px;
 	height: 25px;
 	display: inline-block;
