@@ -70,7 +70,10 @@ public class SongManagerController {
             songManagerService.insertSong(song);
         } catch (IOException e) {
             detail.setCode(500);
-            detail.setMessage("服务器出错");
+            detail.setMessage("歌曲上传出错");
+        } catch (Exception e){
+            detail.setCode(500);
+            detail.setMessage("服务器错误");
         }finally {
             return detail;
         }

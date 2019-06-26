@@ -60,21 +60,18 @@ public class SongListManagerController {
     public Detail insertSongList(@RequestParam("songListName") String name, @RequestParam("listDesc") String description,
                                  @RequestParam("coverPic") MultipartFile file) {
         String relativePath = null;
-        try {
-            relativePath = FileOperator.fileUploud(file);
-        } catch (IOException e) {
-            detail.setCode(500);
-            detail.setMessage("文件上传失败");
-        }
-
         //存储信息
         songList.setName(name);
         songList.setDescription(description);
-        songList.setCoverImgUrl("http://localhost:8080" + relativePath);
         songList.setCreatorId(113568254);
         try {
+            relativePath = FileOperator.fileUploud(file);
+            songList.setCoverImgUrl("http://localhost:8080" + relativePath);
             songListManagerService.insertSongList(songList);
-        }catch (Exception e){
+        } catch (IOException e) {
+            detail.setCode(500);
+            detail.setMessage("文件上传失败");
+        } catch (Exception e){
             detail.setCode(500);
             detail.setMessage("服务器错误");
         }finally {
