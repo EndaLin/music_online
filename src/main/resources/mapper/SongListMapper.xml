@@ -57,15 +57,16 @@
             <id property="id" column="songId"/>
             <result property="type" column="type"/>
             <result property="url" column="url"/>
+            <result property="name" column="songName"/>
         </collection>
     </resultMap>
 
     <select id="getSongListById" parameterType="int" resultMap="songListResultMapById">
-        select *
-        from `schema`.songList, `schema`.songAndSongList, `schema`.song, `schema`.user
-        where songList.id like #{id}
-              and songList.creatorId like user.id
-              and songList.id like  songAndSongList.songListId
-              and songAndSongList.songId like songId
+         select songList.id, description, songList.name, coverImgUrl, songId, song.name as songName, song.url, type, creatorId, avatarUrl, signature, gender, userType
+         from `schema`.songList, `schema`.songAndSongList, `schema`.song as song, `schema`.user
+         where songList.id like #{id}
+            and songList.id like  songAndSongList.songListId
+            and songAndSongList.songId like song.id
+            and songList.creatorId like user.id;
     </select>
 </mapper>

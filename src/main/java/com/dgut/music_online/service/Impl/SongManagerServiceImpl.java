@@ -39,7 +39,7 @@ public class SongManagerServiceImpl implements SongManagerService {
     @Override
     public List<Song> getSongsByPages(int pages) {
         // 一页30条歌曲
-        return songDao.getSongsByPages(pages*30, 30);
+        return songDao.getSongsByPages((pages - 1) * 10, 30);
     }
 
     @Override

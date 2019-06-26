@@ -1304,6 +1304,7 @@ nav.fixed ul .search_box .hot_search>div.open {
 	padding: 15px 14px;
 	display: none;
 	background-color: #111111c4;
+	overflow: auto;
 }
 
 /*MV分类切换动画*/
@@ -1563,7 +1564,9 @@ nav.fixed ul .search_box .hot_search>div.open {
 	background-size: cover;
 	/* overflow: hidden; */
 	box-shadow: 0px 2px 4px #c5c5c5;
+	overflow: auto;
 }
+
 
 .songs_rcmd_cont {
 	width: 1200px;
