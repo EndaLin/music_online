@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>平台登陆</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" href="css/user/normal.css">
+<link rel="stylesheet" href="css/user/login.css">
+<script src="js/prefixfree.min.js"></script>
+</head>
+
+<body>
+
+<div class="login" id="login">
+	<h1>平台登陆</h1>
+	<form method="post">
+		<input v-modle="nickname" type="text" name="nickname" placeholder="用户名" required="required" />
+		<input v-modle="password" type="password" name="password" placeholder="密码" required="required" />
+		<button type="submit" class="btn btn-primary btn-block btn-large" @click="submit">登录</button>
+	</form>
+</div>
+
+<!--引入Vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el:'#login',
+		template:'',
+		data: {
+			nickname:'',
+			password:''
+		},
+		methods: {
+			submit: function() {
+				axios.post('请求路径', {
+				    nickname: this.nickname,   // 用户名
+				    password: this.password    // 密码
+				  })
+				  .then(function (response) {
+				    console.log(response);
+				    alert("登陆成功");
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				    alert("登陆失败");
+				  });
+			}
+		}
+	})
+</script>
+</body>
+</html>
