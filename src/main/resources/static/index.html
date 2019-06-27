@@ -226,6 +226,42 @@ if ((!to3d()) || document.documentMode == 10 || document.documentMode == 11){
 
 
 <script type="text/javascript" src="js/player_database.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el:'songs_rcmd_cont',
+        songLists:[],
+        songs:[],
+        created: function(){
+            getSongLists();
+            getSongs();
+        },
+        methods: {
+            getSongLists: function() {
+                axios.get('请求路径')
+                  .then(function (response) {
+                    console.log(response);
+                    alert("获取歌单成功");
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                    alert("获取歌单失败");
+                  });
+            },
+            getSongs: function() {
+                axios.get('请求路径')
+                  .then(function (response) {
+                    console.log(response);
+                    alert("获取歌曲成功");
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                    alert("获取歌曲失败");
+                  });
+            }
+
+    })
+
+</script>
 </body>
 </html>
 
