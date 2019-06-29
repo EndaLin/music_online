@@ -48,7 +48,6 @@
 <!-- 音乐馆 模块 开始  default-->
 <section class="section_cont" id="app2">
     <div class="new_mv new_common">
-
         <div class="new_mv_title new_common_title index_mv_title">
             <span>歌单</span>
             <a href="?cat=6" class="more"></a>
@@ -60,8 +59,8 @@
         <div class="new_mv_body index_mv_body">
             <div class="mvList" id="mv_rank_list" style="display:block;">
                 <ul class="sb" id="main">
-                    <li v-for="songList in songLists">
-                        <a href="javascript:;" class="playIcon" >
+                    <li v-for="(songList,index) in songLists" v-if="index >= (cur-1)*limit && index < cur*limit">
+                        <a href="javascript:;" class="playIcon">
                             <img width="220" height="125" v-bind:src="songList.coverImgUrl" class="attachment-220x125 wp-post-image" alt="mv_1x2_10" />
                             <p style="color: white">{{songList.name}}</p>
                             <span v-on:click="songListMessage(songList)">
@@ -145,7 +144,6 @@
     <div id="listClose"></div><!--歌曲列表展开收缩按钮-->
 </div>
 <!-- 左侧播放器 结束-->
-
 <!--底部 开始 -->
 <div class="footer" id="footer">
     <div class="footer_cont">
