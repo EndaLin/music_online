@@ -37,8 +37,6 @@ var myPlaylist = new jPlayerPlaylist({
         audioFullScreen: true
     });
 
-
-
 var vm = new Vue({
     el: "#app",
     data: {
