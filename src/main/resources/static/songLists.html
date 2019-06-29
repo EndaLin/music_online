@@ -60,8 +60,8 @@
         <div class="new_mv_body index_mv_body">
             <div class="mvList" id="mv_rank_list" style="display:block;">
                 <ul class="sb" id="main">
-                    <li v-for="songList in songLists">
-                        <a href="javascript:;" class="playIcon" >
+                    <li v-for="(songList,index) in songLists" v-if="index >= (cur-1)*limit && index < cur*limit">
+                        <a href="javascript:;" class="playIcon">
                             <img width="220" height="125" v-bind:src="songList.coverImgUrl" class="attachment-220x125 wp-post-image" alt="mv_1x2_10" />
                             <p style="color: white">{{songList.name}}</p>
                             <span v-on:click="songListMessage(songList)">

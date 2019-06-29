@@ -97,6 +97,7 @@ var sl = new Vue({
         songLists: [],
         cur: 1,
         all: 8,
+        limit:2,
         url: ''
     },
     components:{
@@ -105,18 +106,6 @@ var sl = new Vue({
     methods: {
         callback: function(data){
             this.cur = data;
-            alert('你点击了'+data+ '页');
-        },
-        getSongLists: function() {
-            axios.get('http://localhost:8080/songList')
-                .then(function (response) {
-                    console.log(response);
-                    sl.songLists  = response.data.detail.songLists;
-                    console.log(sl.songLists);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
         }
     },
     created: function(){
@@ -124,6 +113,7 @@ var sl = new Vue({
             .then(function (response) {
                 console.log(response);
                 sl.songLists  = response.data.detail.songLists;
+                sl.all = Math.ceil(sl.songLists.length / sl.limit);
                 console.log(sl.songLists);
             })
             .catch(function (error) {
