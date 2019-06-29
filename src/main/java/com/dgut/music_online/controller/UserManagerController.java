@@ -35,7 +35,7 @@ public class UserManagerController {
     @ApiOperation("用户登陆管理（后台）")
     @PostMapping("/userManage/login")
     public Detail loginManager(@RequestParam("username")Integer username, @RequestParam("password")String password, HttpServletRequest request){
-        HttpSession httpSession = request.getSession();
+
         user.setId(username);
         user.setPassword(password);
         detail.setCode(userManagerService.loginManager(user));
@@ -44,7 +44,8 @@ public class UserManagerController {
             Map map = new HashMap<>();
             map.put("user", user);
             detail.setDetail(map);
-            httpSession.setAttribute("user", user);
+//            request.getSession().setAttribute("user", user);
+            request.setAttribute("user", user);
         }else {
             detail.setMessage("密码错误!");
         }
@@ -53,9 +54,22 @@ public class UserManagerController {
 
     @ApiOperation("用户注册管理（后台）")
     @PostMapping("/userManage/register")
-    public Detail registerManager(@RequestParam("tel")String tel, @RequestParam("IDNumber")String IDNumber){
-        return null;
+    public Detail registerManager(@RequestParam("id")Integer id){
+        userManagerService.applyToManager(id);
+        System.out.println("响应成功");
+        return detail;
     }
+    @ApiOperation("用户管理员审批（后台）")
+    @PostMapping("/userManage/registerAudit")
+    public Detail auditManager(@RequestParam("id") Integer id, @RequestParam("answer") int answer){
+        if (answer == 0){
+            userManagerService.registerManager(id, false);
+        }else {
+            userManagerService.registerManager(id, true);
+        }
+        return detail;
+    }
+
 
     @ApiOperation("用户添加管理（后台）")
     @PostMapping("/userManage/insertUser")
@@ -77,6 +91,28 @@ public class UserManagerController {
         Map map = new HashMap<>();
         map.put("users", users);
 
+        detail.setDetail(map);
+        return detail;
+    }
+    @ApiOperation("用户数据分页获取管理（后台）")
+    @GetMapping("/userManage/getPreManagersByPages")
+    public Detail getPreManagersByPagesManager(@RequestParam("pages") int pages){
+        List<User> managers = userManagerService.getPreManagesByPages(pages);
+        Map map = new HashMap<>();
+        map.put("preManagers", managers);
+
+        detail.setDetail(map);
+        return detail;
+    }
+
+    @ApiOperation("用户数据初始化获取管理（后台）")
+    @GetMapping("/userManage/getInitUsers")
+    public Detail getInitUsers(){
+        List<User> managers = userManagerService.getPreManagesByPages(1);
+        List<User> users = userManagerService.getUsersByPages(1);
+        Map map = new HashMap<>();
+        map.put("preManagers", managers);
+        map.put("users", users);
         detail.setDetail(map);
         return detail;
     }

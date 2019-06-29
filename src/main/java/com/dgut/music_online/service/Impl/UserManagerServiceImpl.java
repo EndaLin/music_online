@@ -56,8 +56,27 @@ public class UserManagerServiceImpl implements UserManagerService {
     }
 
     @Override
+    public List<User> getPreManagesByPages(int pages) {
+        return userDao.getPreManagesByPages((pages-1)*10, 30);
+    }
+
+    @Override
     public void deleteUserById(Integer id) {
         userDao.deleteUserById(id);
+    }
+
+    @Override
+    public void registerManager(Integer id, boolean answer) {
+        if (answer){
+            userDao.registerToManager(id);
+        }else{
+            userDao.notRegisterToManager(id);
+        }
+    }
+
+    @Override
+    public void applyToManager(Integer id) {
+        userDao.applyToManager(id);
     }
 
 }

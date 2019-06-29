@@ -39,8 +39,28 @@ public interface UserManagerService {
     List<User> getUsersByPages(int pages);
 
     /**
+     * 通过当前页数获取一页申请为管理员的普通用户数据
+     * @param pages
+     * @return
+     */
+    List<User> getPreManagesByPages(int pages);
+
+    /**
      * 根据用户id 删除用户
      * @param id
      */
     void deleteUserById(Integer id);
+
+    /**
+     * 审批用户是否成为管理员
+     * @param id
+     * @param answer true 表示同意 false 表示不同意
+     */
+    void registerManager(Integer id, boolean answer);
+
+    /**
+     * 申请成为管理员
+     * @param id
+     */
+    void applyToManager(Integer id);
 }

@@ -22,6 +22,7 @@
         <result property="signature" column="signature"/>
         <result property="gender" column="gender"/>
         <result property="userType" column="userType"/>
+        <result property="password" column="password"/>
         <collection property="songLists" ofType="com.dgut.music_online.domain.SongList">
             <id property="id" column="songListID"/>
             <result property="description" column="description"/>
@@ -31,7 +32,7 @@
     </resultMap>
 
     <select id="getUserById" parameterType="int" resultMap="userMap">
-        select user.id, nickname, avatarUrl, signature, gender, userType, songList.id as songListID, description, name, coverImgUrl
+        select user.id, nickname, avatarUrl, signature, gender, userType, password, songList.id as songListID, description, name, coverImgUrl
         from `schema`.user as user, `schema`.songList as songList
         where user.id = #{id} and creatorId like user.id
     </select>
@@ -39,10 +40,25 @@
     <select id="getUsersByPages" resultType="com.dgut.music_online.domain.User">
         select id, nickname, gender, userType from `schema`.user limit #{pages}, #{number}
     </select>
+    <select id="getPreManagesByPages" resultType="com.dgut.music_online.domain.User">
+        select id, nickname, gender from `schema`.user where audit = 1 and userType = 1 limit #{pages}, #{number}
+    </select>
 
     <delete id="deleteUserById" parameterType="int">
         delete from `schema`.user where id = #{id}
     </delete>
 
 
+
+    <update id="applyToManager">
+        update `schema`.user set audit = 1 where id = #{id}
+    </update>
+
+    <update id="registerToManager">
+        update `schema`.user set userType = 0 where id = #{id}
+    </update>
+
+    <update id="notRegisterToManager">
+        update `schema`.user set audit = 0 where id = #{id}
+    </update>
 </mapper>

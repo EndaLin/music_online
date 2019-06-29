@@ -2,6 +2,7 @@ package com.dgut.music_online.controller;
 
 import com.dgut.music_online.domain.Detail;
 import com.dgut.music_online.domain.SongList;
+import com.dgut.music_online.domain.User;
 import com.dgut.music_online.service.SongListManagerService;
 import com.dgut.music_online.tool.FileOperator;
 import io.swagger.annotations.Api;
@@ -13,7 +14,7 @@ import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -59,12 +60,14 @@ public class SongListManagerController {
     @ApiOperation("创建歌单(后台)")
     @PostMapping(value = "/musicManage/setSongSheet")
     public Detail insertSongList(@RequestParam("songListName") String name, @RequestParam("listDesc") String description,
-                                 @RequestParam("coverPic") MultipartFile file) {
+                                 @RequestParam("coverPic") MultipartFile file,@RequestParam("id") Integer id) {
         String relativePath = null;
+
         //存储信息
         songList.setName(name);
         songList.setDescription(description);
-        songList.setCreatorId(113568254);
+
+        songList.setCreatorId(id);
         try {
             relativePath = FileOperator.fileUploud(file);
             songList.setCoverImgUrl("http://localhost:8080" + relativePath);

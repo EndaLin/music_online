@@ -35,9 +35,43 @@ public interface UserDao {
      */
     User getUserById(Integer id);
 
+    User getUserByIdManager(Integer id);
+
+    /**
+     * 分页获取用户数据
+     * @param pages
+     * @param number
+     * @return
+     */
     List<User> getUsersByPages(@Param("pages")int pages, @Param("number") int number);
+
+    /**
+     * 分页获取申请管理员的用户数据
+     * @param pages
+     * @param number
+     * @return
+     */
+    List<User> getPreManagesByPages(@Param("pages")int pages, @Param("number") int number);
 
     void deleteUserById(Integer id);
 
 
+
+    /**
+     * 申请成为管理员
+     * @param id
+     */
+    void applyToManager(Integer id);
+
+    /**
+     * 同意注册为管理员
+     * @param id
+     */
+    void registerToManager(Integer id);
+
+    /**
+     * 不同意注册为管理员
+     * @param id
+     */
+    void notRegisterToManager(Integer id);
 }
