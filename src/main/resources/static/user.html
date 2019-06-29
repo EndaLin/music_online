@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link
+            href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+            rel="stylesheet"
+    />
+
+    <title>在线音乐平台个人主页</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css"/>
+    <link rel="stylesheet" href="assets/css/templatemo-style.css"/>
+    <link rel="stylesheet" href="assets/css/owl.css"/>
+    <link rel="stylesheet" href="assets/css/lightbox.css"/>
+</head>
+
+<body>
+<div id="app">
+    <div id="page-wraper">
+        <!-- Sidebar Menu -->
+        <div class="responsive-nav">
+            <i class="fa fa-bars" id="menu-toggle"></i>
+            <div id="menu" class="menu">
+                <i class="fa fa-times" id="menu-close"></i>
+                <div class="container">
+                    <div class="image">
+                        <a href="#"><img v-bind:src="user.avatarUrl" alt=""/></a>
+                    </div>
+                    <div class="author-content">
+                        <h4>{{user.nickname}}</h4>
+                        <span v-if="user.gender == '1'">Boy</span>
+                        <span v-else>Girl</span>
+                    </div>
+                    <nav class="main-nav" role="navigation">
+                        <ul class="main-menu">
+                            <li><a href="#section1">我的个人信息</a></li>
+<!--                            <li><a href="#section2">我的歌单</a></li>-->
+<!--                            <li><a href="#section3">My Work</a></li>-->
+                            <li><a href="#section4">创建歌单</a></li>
+                        </ul>
+                    </nav>
+                    <div class="copyright-text">
+                        <p>Copyright © 在线音乐平台开发小组</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section about-me" data-section="section1">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>About Me</h2>
+                    <div class="line-dec"></div>
+                    <span>{{user.signature}}</span>
+                </div>
+                <div class="left-image-post" v-for="songList in user.songLists">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="left-image">
+                                <img v-bind:src="songList.coverImgUrl" alt=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right-text">
+                                <h4>{{songList.name}}</h4>
+                                <p>
+                                    {{songList.description}}
+                                </p>
+                                <div class="white-button">
+                                    <a href="#">查看歌单信息</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!--        <section class="section my-work" data-section="section3">-->
+<!--            <div class="container">-->
+<!--                <div class="section-heading">-->
+<!--                    <h2>我的歌单</h2>-->
+<!--                    <div class="line-dec"></div>-->
+<!--                    <span-->
+<!--                    >我的佳作</span-->
+<!--                    >-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="isotope-wrapper">-->
+<!--                        <div class="isotope-box">-->
+<!--                            <div class="isotope-item" data-type="nature">-->
+<!--                                <figure class="snip1321" v-for="songList in user.songLists">-->
+<!--                                    <img-->
+<!--                                            v-bind:src="songList.coverImgUrl"-->
+<!--                                            alt="sq-sample26"-->
+<!--                                    />-->
+<!--                                    <figcaption>-->
+<!--                                        <a-->
+<!--                                                v-bind:href="songList.coverImgUrl"-->
+<!--                                                data-lightbox="image-1"-->
+<!--                                                data-title="Caption"-->
+<!--                                        ><i class="fa fa-search"></i-->
+<!--                                        ></a>-->
+<!--                                        <h4>{{songList.name}}</h4>-->
+<!--                                        <span>{{songList.description}}</span>-->
+<!--                                    </figcaption>-->
+<!--                                </figure>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+        <section class="section contact-me" data-section="section4">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>创建歌单</h2>
+                    <div class="line-dec"></div>
+                    <span
+                    >对歌单进行创建</span
+                    >
+                </div>
+                <div class="row">
+                    <div class="right-content">
+                        <div class="container">
+                            <form id="contact" action="" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input
+                                                    name="name"
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="name"
+                                                    placeholder="歌单名字..."
+                                                    required=""
+                                            />
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input
+                                                    name="email"
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="email"
+                                                    placeholder="歌单描述..."
+                                                    required=""
+                                            />
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <input
+                                                    name="subject"
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="subject"
+                                                    placeholder="歌单封面链接..."
+                                                    required=""
+                                            />
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                        <textarea
+                                name="message"
+                                rows="6"
+                                class="form-control"
+                                id="message"
+                                placeholder="Your message..."
+                                required=""
+                        ></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="button">
+                                                Send Message
+                                            </button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/isotope.min.js"></script>
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<script src="assets/js/custom.js"></script>
+<script>
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+
+    //according to loftblog tut
+    $(".main-menu li:first").addClass("active");
+
+    var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+            reqSection = $(".section").filter(
+                '[data-section="' + direction + '"]'
+            ),
+            reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+            $("body, html").animate(
+                {
+                    scrollTop: reqSectionPos
+                },
+                800
+            );
+        } else {
+            $("body, html").scrollTop(reqSectionPos);
+        }
+    };
+
+    var checkSection = function checkSection() {
+        $(".section").each(function () {
+            var $this = $(this),
+                topEdge = $this.offset().top - 80,
+                bottomEdge = topEdge + $this.height(),
+                wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+                var currentId = $this.data("section"),
+                    reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+                reqLink
+                    .closest("li")
+                    .addClass("active")
+                    .siblings()
+                    .removeClass("active");
+            }
+        });
+    };
+
+    $(".main-menu").on("click", "a", function (e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+    });
+
+    $(window).scroll(function () {
+        checkSection();
+    });
+
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            user: {},
+            songs: []
+        },
+        created: function () {
+            var id = "113568254";
+            axios.get('http://localhost:8080/userManage/' + id)
+                .then(function (response) {
+                    console.log(response);
+                    var data = response.data.detail;
+                    vm.user = data.user;
+                    console.log(vm.user);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            axios.get('http://localhost:8080/song')
+                .then(function (response) {
+                    console.log(response);
+                    var data = response.data.detail;
+                    vm.songs = data.musics;
+                    console.log(vm.songs);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        methods: {}
+    });
+
+
+</script>
+</body>
+</html>

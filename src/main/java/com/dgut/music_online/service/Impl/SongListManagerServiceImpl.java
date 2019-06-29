@@ -37,8 +37,8 @@ public class SongListManagerServiceImpl implements SongListManagerService {
     }
 
     @Override
-    public List<SongList> getSongListByPages(int pages) {
-        List<SongList> songLists = songListDao.getSongListByPages((pages - 1) * 10,30);
+    public List<SongList> getSongListByPages(int pages, int limit) {
+        List<SongList> songLists = songListDao.getSongListByPages((pages - 1) * 10, limit);
         return songLists;
     }
 

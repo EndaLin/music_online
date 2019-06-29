@@ -14,15 +14,35 @@
         (#{id}, #{nickname}, #{avatarUrl}, #{signature}, #{gender}, #{userType})
     </insert>
 
-    <select id="getUserById" resultType="com.dgut.music_online.domain.User">
-        select * from `schema`.user where id = #{id}
+
+    <resultMap id="userMap" type="com.dgut.music_online.domain.User">
+        <id property="id" column="id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="avatarUrl" column="avatarUrl"/>
+        <result property="signature" column="signature"/>
+        <result property="gender" column="gender"/>
+        <result property="userType" column="userType"/>
+        <collection property="songLists" ofType="com.dgut.music_online.domain.SongList">
+            <id property="id" column="songListID"/>
+            <result property="description" column="description"/>
+            <result property="name" column="name"/>
+            <result property="coverImgUrl" column="coverImgUrl"/>
+        </collection>
+    </resultMap>
+
+    <select id="getUserById" parameterType="int" resultMap="userMap">
+        select user.id, nickname, avatarUrl, signature, gender, userType, songList.id as songListID, description, name, coverImgUrl
+        from `schema`.user as user, `schema`.songList as songList
+        where user.id = #{id} and creatorId like user.id
     </select>
 
     <select id="getUsersByPages" resultType="com.dgut.music_online.domain.User">
         select id, nickname, gender, userType from `schema`.user limit #{pages}, #{number}
     </select>
 
-    <delete id="deleteUserById">
+    <delete id="deleteUserById" parameterType="int">
         delete from `schema`.user where id = #{id}
     </delete>
+
+
 </mapper>

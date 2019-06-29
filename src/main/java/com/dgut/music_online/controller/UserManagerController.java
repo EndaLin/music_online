@@ -3,7 +3,9 @@ package com.dgut.music_online.controller;
 import com.dgut.music_online.domain.Detail;
 import com.dgut.music_online.domain.User;
 import com.dgut.music_online.service.UserManagerService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +20,7 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
+@Api(tags = "对用户操作的相关接口")
 public class UserManagerController {
 
     @Autowired
@@ -78,4 +81,13 @@ public class UserManagerController {
         return detail;
     }
 
+    @ApiOperation("根据用户ID获取用户信息")
+    @GetMapping("/userManage/{id}")
+    public Detail getUserById(@PathVariable("id")Integer id){
+        User user = userManagerService.getUserById(id);
+        Map map = new HashMap<>();
+        map.put("user", user);
+        detail.setDetail(map);
+        return detail;
+    }
 }
