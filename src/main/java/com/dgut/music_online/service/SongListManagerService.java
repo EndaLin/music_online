@@ -29,7 +29,7 @@ public interface SongListManagerService {
     /**
      *根据页数获取歌单页，一次30条
      */
-    List<SongList> getSongListByPages(int pages);
+    List<SongList> getSongListByPages(int pages, int limit);
 
     /**
      * 更新歌单，更新歌单的名称，和描述信息

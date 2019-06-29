@@ -35,7 +35,7 @@ public class SongListManagerServiceTest {
 
     @Test
     public void getSongListByPages(){
-        List<SongList> songLists = songListManagerService.getSongListByPages(0);
+        List<SongList> songLists = songListManagerService.getSongListByPages(0, 3);
         System.out.println(songLists);
     }
 

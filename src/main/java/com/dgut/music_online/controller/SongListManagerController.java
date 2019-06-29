@@ -6,6 +6,7 @@ import com.dgut.music_online.service.SongListManagerService;
 import com.dgut.music_online.tool.FileOperator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ClassUtils;
@@ -118,8 +119,8 @@ public class SongListManagerController {
 
     @ApiOperation("分页显示歌单（后台）")
     @GetMapping(value = "/musicManage/getSongSheetsByPages")
-    public Detail getSongListByPages(@RequestParam("pages") int pages) {
-        List<SongList> songLists = songListManagerService.getSongListByPages(pages);
+    public Detail getSongListByPages(@RequestParam("pages") int pages, @RequestParam(value = "limit", defaultValue = "30")String limit) {
+        List<SongList> songLists = songListManagerService.getSongListByPages(pages, Integer.valueOf(limit));
 
         Map<Object, Object> map = new HashMap<>();
         map.put("songLists", songLists);

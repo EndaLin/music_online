@@ -3,6 +3,9 @@ package com.dgut.music_online.domain;
 import io.swagger.annotations.ApiModel;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author: wt
  * @Date: 2019/5/12 9:38
@@ -44,6 +47,12 @@ public class User {
      * 用户密码
      */
     private String password;
+
+    /**
+     * 该用户创建的歌单信息
+     * @return
+     */
+    private List<SongList> songLists = new ArrayList<>();
 
     public String getPassword() {
         return password;
@@ -99,6 +108,14 @@ public class User {
 
     public void setUserType(Integer userType) {
         this.userType = userType;
+    }
+
+    public List<SongList> getSongLists() {
+        return songLists;
+    }
+
+    public void setSongLists(List<SongList> songLists) {
+        this.songLists = songLists;
     }
 
     @Override

@@ -119,7 +119,6 @@ var sl = new Vue({
             });
     }
 });
-
 var log = new Vue({
     el:'#login',
     template:'',

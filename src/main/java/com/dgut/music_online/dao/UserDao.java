@@ -38,4 +38,6 @@ public interface UserDao {
     List<User> getUsersByPages(@Param("pages")int pages, @Param("number") int number);
 
     void deleteUserById(Integer id);
+
+
 }
