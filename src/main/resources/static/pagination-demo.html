@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-pagination</title>
+    <link rel="stylesheet" href="css/pagination.css">
+</head>
+<body>
+  <div id="app">
+  <vue-nav :cur="cur" :all="all" :callback="callback"></vue-nav>
+    <p>{{msg}}</p>
+  </div>
+<script src="js/pagination/vue2.js"></script>
+<script src="js/pagination/vue-nav.js"></script>
+
+<script type="text/javascript">
+  var app = new Vue({
+      el: '#app',
+      data:{
+        cur: 1,
+        all: 8,
+        msg: ''
+      },
+      components:{
+        'vue-nav': Vnav
+      },
+      methods:{
+        callback(data) {
+          this.cur = data
+          this.msg = '你点击了'+data+ '页'
+        }
+      }
+  })
+
+</script>
+   
+</body>
+</html>

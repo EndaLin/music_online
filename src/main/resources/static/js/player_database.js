@@ -94,9 +94,19 @@ var vm = new Vue({
 var sl = new Vue({
     el:"#app2",
     data: {
-        songLists: []
+        songLists: [],
+        cur: 1,
+        all: 8,
+        url: ''
+    },
+    components:{
+        'vue-nav': Vnav
     },
     methods: {
+        callback: function(data){
+            this.cur = data;
+            alert('你点击了'+data+ '页');
+        },
         getSongLists: function() {
             axios.get('http://localhost:8080/songList')
                 .then(function (response) {

@@ -8,6 +8,7 @@
     <meta name="description" content="person music" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/player.css" />
+    <link rel="stylesheet" type="text/css" href="css/pagination.css" />
     <link rel="Shortcut Icon" href="images/favicon.ico" />
     <script type="text/javascript" src="js/modernizr.js"></script>
     <script>
@@ -71,6 +72,10 @@
                 </ul>
             </div>
         </div>
+    </div>
+    <!-- 分页 -->
+    <div class="pagination">
+        <vue-nav :cur="cur" :all="all" :url="url" :callback="callback"></vue-nav>
     </div>
 </section>
 <!-- 左侧播放器 开始-->
@@ -151,8 +156,8 @@
 </div>
 <!--引入Vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+<script src="js/axios.min.js"></script>
+<script src="js/pagination/vue-nav.js"></script>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/other.js"></script>
