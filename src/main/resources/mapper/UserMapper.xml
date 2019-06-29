@@ -13,4 +13,16 @@
         values
         (#{id}, #{nickname}, #{avatarUrl}, #{signature}, #{gender}, #{userType})
     </insert>
+
+    <select id="getUserById" resultType="com.dgut.music_online.domain.User">
+        select * from `schema`.user where id = #{id}
+    </select>
+
+    <select id="getUsersByPages" resultType="com.dgut.music_online.domain.User">
+        select id, nickname, gender, userType from `schema`.user limit #{pages}, #{number}
+    </select>
+
+    <delete id="deleteUserById">
+        delete from `schema`.user where id = #{id}
+    </delete>
 </mapper>

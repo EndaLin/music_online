@@ -26,4 +26,9 @@ public class UserManagerServiceTest {
         List<User> userList = userManagerService.getAllUser();
         System.out.println(userList.size());
     }
+    @Test
+    public void getUsersByPages(){
+        List<User> users = userManagerService.getUsersByPages(1);
+        System.out.println(users);
+    }
 }

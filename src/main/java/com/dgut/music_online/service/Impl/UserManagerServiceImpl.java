@@ -16,7 +16,10 @@ import java.util.List;
 public class UserManagerServiceImpl implements UserManagerService {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
+
+    @Autowired
+    private User userCheck;
 
     @Override
     public List<User> getAllUser() {
@@ -27,6 +30,34 @@ public class UserManagerServiceImpl implements UserManagerService {
     @Override
     public void insertUser(User user) {
         userDao.insertUser(user);
+    }
+
+    @Override
+    public int loginManager(User user) {
+        userCheck = userDao.getUserById(user.getId());
+        if (userCheck == null){
+            return 400;
+        }else if (userCheck.getPassword().equals(user.getPassword())){
+            return 200;
+        }else {
+            return 400;
+        }
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+        return userDao.getUserById(id);
+    }
+
+    @Override
+    public List<User> getUsersByPages(int pages) {
+
+        return userDao.getUsersByPages((pages-1)*10, 30);
+    }
+
+    @Override
+    public void deleteUserById(Integer id) {
+        userDao.deleteUserById(id);
     }
 
 }
