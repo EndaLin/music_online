@@ -91,8 +91,87 @@ var vm = new Vue({
     }
 });
 
-	
-	
+var sl = new Vue({
+    el:"#app2",
+    data: {
+        songLists: []
+    },
+    methods: {
+        getSongLists: function() {
+            axios.get('http://localhost:8080/songList')
+                .then(function (response) {
+                    console.log(response);
+                    sl.songLists  = response.data.detail.songLists;
+                    console.log(sl.songLists);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    },
+    created: function(){
+        axios.get('http://localhost:8080/songList')
+            .then(function (response) {
+                console.log(response);
+                sl.songLists  = response.data.detail.songLists;
+                console.log(sl.songLists);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+});
+
+var log = new Vue({
+    el:'#login',
+    template:'',
+    data: {
+        nickname:'',
+        password:''
+    },
+    methods: {
+        submit: function() {
+            axios.post('http://localhost:8080/login', {
+                nickname: this.nickname,   // 用户名
+                password: this.password    // 密码
+            })
+                .then(function (response) {
+                    console.log(response);
+                    alert("登陆成功");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    alert("登陆失败");
+                });
+        }
+    }
+});
+
+var reg = new Vue({
+    el:'#register',
+    template:'',
+    data: {
+        nickname:'',
+        password:''
+    },
+    methods: {
+        submit: function() {
+            axios.post('http://localhost:8080/register', {
+                nickname: this.nickname,   // 用户名
+                password: this.password    // 密码
+            })
+                .then(function (response) {
+                    console.log(response);
+                    alert("登陆成功");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    alert("登陆失败");
+                });
+        }
+    }
+});
+
 	
 	
 	
