@@ -23,31 +23,6 @@
 <!--引入Vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript">
-	new Vue({
-		el:'#register',
-		template:'',
-		data: {
-			nickname:'',
-			password:''
-		},
-		methods: {
-			submit: function() {
-				axios.post('请求路径', {
-				    nickname: this.nickname,   // 用户名
-				    password: this.password    // 密码
-				  })
-				  .then(function (response) {
-				    console.log(response);
-				    alert("登陆成功");
-				  })
-				  .catch(function (error) {
-				    console.log(error);
-				    alert("登陆失败");
-				  });
-			}
-		}
-	})
-</script>
+<script type="text/javascript" src="js/player_database.js"></script>
 </body>
 </html>

@@ -1,0 +1,166 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>在线音乐平台</title>
+    <meta name="keywords" content="在线音乐平台" />
+    <meta name="description" content="person music" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/player.css" />
+    <link rel="Shortcut Icon" href="images/favicon.ico" />
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script>
+        if ((!to3d()) || document.documentMode == 10 || document.documentMode == 11){
+            window.location="error/error.html";
+        }
+    </script>
+</head>
+<body>
+<!--头部 开始-->
+<div id="header">
+    <!--顶部bar 开始-->
+    <div id="headCont">
+        <audio id="audioPlayer"></audio>
+        <!--二级导航-->
+        <nav class="sub_nav">
+            <div class="nav_list">
+                <ul>
+                    <li>
+                        <a href="" class="smallogo">
+                            <span class="mini_logo"></span>
+                        </a>
+                    </li>
+                    <li><a href="" class="home"></a></li>
+
+                    <div class="sub_list" id="sub_list">
+                        <p class="active">
+                            <a href="?cat=9">音乐是人类塑造灵魂的催化剂.</a>
+                        </p>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--头部导航  结束-->
+</div>
+<!-- 音乐馆 模块 开始  default-->
+<section class="section_cont" id="app2">
+    <div class="new_mv new_common">
+
+        <div class="new_mv_title new_common_title index_mv_title">
+            <span>歌单</span>
+            <a href="?cat=6" class="more"></a>
+            <ul>
+                <li><a class="cur" href="javascript:;">dream</a></li>
+            </ul>
+        </div>
+
+        <div class="new_mv_body index_mv_body">
+            <div class="mvList" id="mv_rank_list" style="display:block;">
+                <ul class="sb" id="main">
+                    <li v-for="songList in songLists">
+                        <a href="javascript:;" class="playIcon" >
+                            <img width="220" height="125" v-bind:src="songList.coverImgUrl" class="attachment-220x125 wp-post-image" alt="mv_1x2_10" />
+                            <p style="color: white">{{songList.name}}</p>
+                            <span v-on:click="songListMessage(songList)">
+                                 <p style="color: white;font-weight: bold">{{songList.description}}</p>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 左侧播放器 开始-->
+<div id="jp_container_N" class="jp-video jp-video-270p" role="application" aria-label="media player">
+    <div class="jp-type-playlist">
+        <div id="jquery_jplayer_N"class="jp-jplayer"></div>
+        <div class="jp-gui">
+            <div class="jp-video-play">
+                <button class="jp-video-play-icon" role="button" tabindex="0">播放</button>
+            </div>
+            <div class="jp-interface">
+                <div class="jp-progress">
+                    <div class="jp-seek-bar">
+                        <div class="jp-play-bar"></div>
+                    </div>
+                </div>
+                <div class="jp-current-time" role="timer" aria-label="time"></div>
+                <div class="jp-duration" role="timer" aria-label="duration"></div>
+                <div class="jp-controls-holder">
+                    <div class="jp-controls">
+                        <button class="jp-previous" role="button" tabindex="0">上一曲</button>
+                        <button class="jp-play" role="button" tabindex="0">播放</button>
+                        <button class="jp-next" role="button" tabindex="0">下一曲</button>
+                        <button class="jp-stop" role="button" tabindex="0">暂停</button>
+                    </div>
+                    <div class="jp-volume-controls">
+                        <button class="jp-mute" role="button" tabindex="0">静音</button>
+                        <button class="jp-volume-max" role="button" tabindex="0">最大音量</button>
+                        <div class="jp-volume-bar">
+                            <div class="jp-volume-bar-value"></div>
+                        </div>
+                    </div>
+                    <div class="jp-toggles">
+                        <button class="jp-repeat" role="button" tabindex="0">重复</button>
+                        <button class="jp-shuffle" role="button" tabindex="0">随机</button>
+                        <!--<button class="jp-full-screen" role="button" tabindex="0">全屏</button>-->
+                    </div>
+                </div>
+                <div class="jp-details">
+                    <div class="jp-title" aria-label="title"></div>
+                </div>
+            </div>
+        </div>
+        <div class="jp-playlist">
+            <div class="jp-playlist-box">
+                <ul>
+                    <!-- 该方法使用无序列表displayplaylist()播放列表 -->
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="jp-no-solution">
+            <span>升级需要</span>
+            您浏览器赞不支持播放，请更新版本
+            <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash插件</a>.
+        </div>
+    </div>
+    <!--歌曲列表滚动条-->
+    <div class="scrollBar">
+        <div class="bar"></div>
+    </div>
+    <!--播放器展开隐藏按钮-->
+    <button type="button" class="folded_bt" title="点击收缩" id="btnfold">
+        <span></span>
+    </button>
+    <div id="listRemove"></div><!--移除全部歌曲按钮-->
+    <div id="listClose"></div><!--歌曲列表展开收缩按钮-->
+</div>
+<!-- 左侧播放器 结束-->
+
+<!--底部 开始 -->
+<div class="footer" id="footer">
+    <div class="footer_cont">
+        <p>
+            Copyright © 在线音乐平台开发小组
+        </p>
+    </div>
+</div>
+<!--引入Vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/other.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<!--播放器js-->
+<script type="text/javascript" src="js/player.js"></script>
+<script type="text/javascript" src="js/playlist.js"></script>
+<!--播放器js-->
+<script type="text/javascript" src="js/player_database.js"></script>
+</body>
+</html>

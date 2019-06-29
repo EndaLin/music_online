@@ -42,6 +42,14 @@ if ((!to3d()) || document.documentMode == 10 || document.documentMode == 11){
                         	<a href="?cat=9">音乐是人类塑造灵魂的催化剂.</a>
                         </p>
                     </div>
+                    <li><a href="" class="home"></a></li>
+                    <li><a href="" class="home"></a></li>
+                    <li style="width: 50px">
+                        <a href="/login.html" style="width: 50px">登陆</a>
+                    </li>
+                    <li>
+                        <a href="/register.html" style="width: 50px">注册</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -89,11 +97,11 @@ if ((!to3d()) || document.documentMode == 10 || document.documentMode == 11){
             <a href="?cat=6" class="more"></a>
             <ul>
                 <li><a class="cur" href="javascript:;">dream</a></li>
+                <li><a class="cur" href="/songLists.html">more</a></li>
             </ul>
         </div>
         
         <div class="new_mv_body index_mv_body">
-         
             <div class="mvList" id="mv_rank_list" style="display:block;">
                 <ul class="sb" id="main">
 			        <li v-for="songList in songLists">
@@ -223,45 +231,7 @@ if ((!to3d()) || document.documentMode == 10 || document.documentMode == 11){
 <script type="text/javascript" src="js/player.js"></script>
 <script type="text/javascript" src="js/playlist.js"></script>
 <!--播放器js-->
-
-
 <script type="text/javascript" src="js/player_database.js"></script>
-<script type="text/javascript">
-    new Vue({
-        el:'songs_rcmd_cont',
-        songLists:[],
-        songs:[],
-        created: function(){
-            getSongLists();
-            getSongs();
-        },
-        methods: {
-            getSongLists: function() {
-                axios.get('请求路径')
-                  .then(function (response) {
-                    console.log(response);
-                    alert("获取歌单成功");
-                  })
-                  .catch(function (error) {
-                    console.log(error);
-                    alert("获取歌单失败");
-                  });
-            },
-            getSongs: function() {
-                axios.get('请求路径')
-                  .then(function (response) {
-                    console.log(response);
-                    alert("获取歌曲成功");
-                  })
-                  .catch(function (error) {
-                    console.log(error);
-                    alert("获取歌曲失败");
-                  });
-            }
-
-    })
-
-</script>
 </body>
 </html>
 
