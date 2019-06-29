@@ -2067,3 +2067,8 @@ ul.rcmd_cont li i.third_place {
 }
 
 /*网站底部 结束*/
+/* 补充 */
+.pagination {
+	margin: 10px auto;
+	width: 600px;
+}
