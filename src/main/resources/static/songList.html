@@ -7,6 +7,7 @@
     <meta name="description" content="person music"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/player.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pagination.css" />
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="Shortcut Icon" href="images/favicon.ico"/>
     <script type="text/javascript" src="js/modernizr.js"></script>
@@ -69,12 +70,18 @@
         </div>
         <div class="songs_rcmd sl_right_songs" id="songs_rcmd">
             <div class="songs_rcmd_cont">
-                <ul class="rcmd_cont" id="latest">
-                    <li v-for="(song, index) in listSong">
-                        <a href="" class="musicName" > {{song.name}}</a>
-                        <a class="playIcon" href="javascript:void(0)" v-on:click="playMusic(song)"></a>
-                    </li>
-                </ul>
+                <div class="s_show">
+                    <ul class="rcmd_cont" id="latest">
+                        <li v-for="(song, index) in listSong" v-if="index >= (cur-1)*limit && index < cur*limit">
+                            <a href="" class="musicName" > {{song.name}}</a>
+                            <a class="playIcon" href="javascript:void(0)" v-on:click="playMusic(song)"></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 分页 -->
+                <div class="pagination">
+                    <vue-nav :cur="cur" :all="all" :url="url" :callback="callback"></vue-nav>
+                </div>
             </div>
         </div>
     </div>
@@ -158,12 +165,14 @@
 <!--引入Vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/pagination/vue-nav.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <!--播放器js-->
 <script type="text/javascript" src="js/player.js"></script>
 <script type="text/javascript" src="js/playlist.js"></script>
 <!--播放器js-->
+<script type="text/javascript" src="js/player_database.js"></script>
 <script type="text/javascript">
     //获取url中的参数
     function getUrlParam(name) {
@@ -213,7 +222,13 @@
         data: {
             songList: '',
             listSong: [],
-            //creator: {}
+            cur: 1,
+            all: 8,
+            limit:10,
+            url: ''
+        },
+        components:{
+            'vue-nav': Vnav
         },
         created: function () {
             var id = getUrlParam("id");
@@ -224,6 +239,7 @@
                     if (vm.songList.listSong != null) {
                         vm.listSong = vm.songList.listSong;
                     }
+                    vm.all = Math.ceil(vm.listSong.length / vm.limit);
                     //vm.creator = vm.songList.user;
                     console.log(vm.listSong);
                 })
@@ -232,6 +248,10 @@
                 });
         },
         methods: {
+            callback: function(data){
+                this.cur = data;
+                alert(data);
+            },
             playMusic: function (obj) {
                 myPlaylist.add({
                     title: obj.name, artist: "在线音乐平台开发小组",
