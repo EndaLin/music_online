@@ -48,48 +48,34 @@
     <!--头部导航  结束-->
 </div>
 
-
 <!-- 音乐馆 模块 开始  default-->
-<section class="section_cont" id="app">
-    <div class="new_mv new_common">
-
-        <div class="new_mv_title new_common_title index_mv_title">
-            <span>歌单</span>
-            <a href="?cat=6" class="more"></a>
-            <ul>
-                <li><a class="cur" href="javascript:;">dream</a></li>
-            </ul>
+<div id="songList" style="position: relative;">
+    <!-- 歌单 -->
+    <div class="section_cont sl_left">
+        <img width="100%" height="175" v-bind:src="songList.coverImgUrl" class=" " alt="mv_1x2_10" />
+        <p>by：{{songList.id}}</p>
+        <p>介绍：{{songList.description}}</p>
+    </div>
+    <!-- 歌曲列表 -->
+    <div class="section_cont sl_right">
+        <div class="songs_rcmd_title">
+            <div class="rcmd_left_title rcmd_title">
+                <span style="font-size: 20px">所有音乐</span>
+                <a href="" class="more">/more</a>
+            </div>
         </div>
-
-        <div class="new_mv_body index_mv_body">
-
-            <div class="mvList" id="mv_rank_list" style="display:block;">
-
+        <div class="songs_rcmd" id="songs_rcmd">
+            <div class="songs_rcmd_cont">
+                <ul class="rcmd_cont" id="latest">
+                    <li v-for="(song, index) in listSong">
+                        <a href="" class="musicName" > {{song.name}}</a>
+                        <a class="playIcon" href="javascript:void(0)" v-on:click="playMusic(song)"></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-
-    <div class="songs_rcmd_title">
-        <div class="rcmd_left_title rcmd_title">
-            <span style="font-size: 20px">所有音乐</span>
-            <a href="" class="more">/more</a>
-        </div>
-    </div>
-
-    <div class="songs_rcmd" id="songs_rcmd">
-        <div class="songs_rcmd_cont">
-            <ul class="rcmd_cont" id="latest">
-                <li v-for="(song, index) in listSong">
-                    <a href="" class="musicName"> {{song.name}}</a>
-                    <!--                    <a class="shareIcon" href="javascript:;"></a>-->
-                    <a class="playIcon" href="javascript:void(0)" v-on:click="playMusic(song)"></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-
+</div>
 <!-- 左侧播放器 开始-->
 <div id="jp_container_N" class="jp-video jp-video-270p" role="application" aria-label="media player">
     <div class="jp-type-playlist">
@@ -170,9 +156,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
-
 <script type="text/javascript" src="js/index.js"></script>
-
 <!--播放器js-->
 <script type="text/javascript" src="js/player.js"></script>
 <script type="text/javascript" src="js/playlist.js"></script>
@@ -222,14 +206,14 @@
             audioFullScreen: true
         });
     var vm = new Vue({
-        el: "#app",
+        el: "#songList",
         data: {
             songList: '',
             listSong: [],
-            creator: {}
+            //creator: {}
         },
         created: function () {
-            var id = getUrlParam("id");
+            var id = getUrlParam("id");alert(id);
             axios.get('http://localhost:8080/songList/' + id)
                 .then(function (response) {
                     console.log(response);
@@ -237,8 +221,8 @@
                     if (vm.songList.listSong != null) {
                         vm.listSong = vm.songList.listSong;
                     }
-                    vm.creator = vm.songList.user;
-                    console.log(vm.listSong)
+                    //vm.creator = vm.songList.user;
+                    console.log(vm.listSong);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -256,7 +240,7 @@
                 myPlaylist.play(-1);
             }
         }
-    })
+    });
 
     //移除
     $("#playlist-remove").click(function () {
