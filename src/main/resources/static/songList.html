@@ -53,8 +53,11 @@
     <!-- 歌单 -->
     <div class="section_cont sl_left">
         <img width="100%" height="175" v-bind:src="songList.coverImgUrl" class=" " alt="mv_1x2_10" />
-        <p>by：{{songList.id}}</p>
-        <p>介绍：{{songList.description}}</p>
+        <p style="color: white">歌单名称：{{songList.name}}</p>
+        <p style="color: white">歌单描述：{{songList.description}}</p>
+        <br />
+        <p style="color: white">作者：{{songList.user.nickname}}</p>
+        <p style="color: white">作者描述：{{songList.user.signature}}</p>
     </div>
     <!-- 歌曲列表 -->
     <div class="section_cont sl_right">

@@ -71,7 +71,7 @@ if ((!to3d()) || document.documentMode == 10 || document.documentMode == 11){
                     <span class="banner_btn_arrow"><i></i></span>
                 </a>
                 <ul>
-                    <li  v-for="(songList, index) in songLists.slice(0, 5)" v-bind:id="['imgCard' + index]">
+                    <li  v-for="(songList, index) in songLists.slice(0, 4)" v-bind:id="['imgCard' + index]">
                         <a href=""><span style="opacity:0;"></span></a>
                         <img v-bind:src="songList.coverImgUrl" alt="" style="width: 500px;height: 345px" v-on:click="songListMessage(songList)">
                         <p style="bottom:0">{{songList.description}}</p>

@@ -1,8 +1,10 @@
 package com.dgut.music_online.service.Impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.dgut.music_online.dao.SongListDao;
 import com.dgut.music_online.domain.SongList;
 import com.dgut.music_online.service.SongListManagerService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +23,11 @@ public class SongListManagerServiceImpl implements SongListManagerService {
     }
 
     @Override
-    public void insertSongIntoSongList(Integer songListId, Integer songId) {
-        songListDao.insertSongIntoSongList(songListId, songId);
+    public void insertSongIntoSongList(Integer songListId, Integer[] songId) {
+
+        for (int i = 0; i < songId.length; i++) {
+            songListDao.insertSongIntoSongList(songListId, songId[i]);
+        }
     }
 
     @Override

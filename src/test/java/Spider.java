@@ -12,10 +12,6 @@ public class Spider {
 
     @Test
     public void run() {
-        String url = "https://wt-git-repository.github.io/";
-        for (int i = 0;i < 10000;i++) {
-            restTemplate.getForObject(url, String.class);
-            System.out.println("访问第" + i + "次");
-        }
+        System.out.println(System.currentTimeMillis() / 10000);
     }
 }

@@ -60,10 +60,10 @@ public class CloudMusicManagerServiceTest {
         for (Song song : songs) {
             // 插入新歌
             songManagerService.insertSong(song);
-
-            // 将每首新歌与歌单关联
-            songListManagerService.insertSongIntoSongList(songList.getId(), song.getId());
         }
+        // 将每首新歌与歌单关联
+        songListManagerService.insertSongIntoSongList(songList.getId(), (Integer[]) songs.toArray());
+
 
         User user = songList.getUser();
         userManagerService.insertUser(user);

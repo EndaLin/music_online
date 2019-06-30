@@ -44,8 +44,8 @@
                     <nav class="main-nav" role="navigation">
                         <ul class="main-menu">
                             <li><a href="#section1">我的个人信息</a></li>
-<!--                            <li><a href="#section2">我的歌单</a></li>-->
-<!--                            <li><a href="#section3">My Work</a></li>-->
+                            <!--                            <li><a href="#section2">我的歌单</a></li>-->
+                            <!--                            <li><a href="#section3">My Work</a></li>-->
                             <li><a href="#section4">创建歌单</a></li>
                         </ul>
                     </nav>
@@ -85,41 +85,6 @@
                 </div>
             </div>
         </section>
-<!--        <section class="section my-work" data-section="section3">-->
-<!--            <div class="container">-->
-<!--                <div class="section-heading">-->
-<!--                    <h2>我的歌单</h2>-->
-<!--                    <div class="line-dec"></div>-->
-<!--                    <span-->
-<!--                    >我的佳作</span-->
-<!--                    >-->
-<!--                </div>-->
-<!--                <div class="row">-->
-<!--                    <div class="isotope-wrapper">-->
-<!--                        <div class="isotope-box">-->
-<!--                            <div class="isotope-item" data-type="nature">-->
-<!--                                <figure class="snip1321" v-for="songList in user.songLists">-->
-<!--                                    <img-->
-<!--                                            v-bind:src="songList.coverImgUrl"-->
-<!--                                            alt="sq-sample26"-->
-<!--                                    />-->
-<!--                                    <figcaption>-->
-<!--                                        <a-->
-<!--                                                v-bind:href="songList.coverImgUrl"-->
-<!--                                                data-lightbox="image-1"-->
-<!--                                                data-title="Caption"-->
-<!--                                        ><i class="fa fa-search"></i-->
-<!--                                        ></a>-->
-<!--                                        <h4>{{songList.name}}</h4>-->
-<!--                                        <span>{{songList.description}}</span>-->
-<!--                                    </figcaption>-->
-<!--                                </figure>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
 
         <section class="section contact-me" data-section="section4">
             <div class="container">
@@ -144,6 +109,7 @@
                                                     id="name"
                                                     placeholder="歌单名字..."
                                                     required=""
+                                                    v-model="songListMessage.name"
                                             />
                                         </fieldset>
                                     </div>
@@ -156,6 +122,7 @@
                                                     id="email"
                                                     placeholder="歌单描述..."
                                                     required=""
+                                                    v-model="songListMessage.description"
                                             />
                                         </fieldset>
                                     </div>
@@ -168,25 +135,27 @@
                                                     id="subject"
                                                     placeholder="歌单封面链接..."
                                                     required=""
+                                                    v-model="songListMessage.coverImgUrl"
                                             />
                                         </fieldset>
                                     </div>
                                     <div class="col-md-12">
                                         <fieldset>
-                        <textarea
-                                name="message"
-                                rows="6"
-                                class="form-control"
-                                id="message"
-                                placeholder="Your message..."
-                                required=""
-                        ></textarea>
+                                            <div class="form-group">
+                                                <label for="name" style="font-weight: bold">选择歌曲</label>
+                                                <div class="form-check" v-for="song in songs">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               v-bind:value="song.id">{{song.name}}
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-12">
                                         <fieldset>
-                                            <button type="submit" id="form-submit" class="button">
-                                                Send Message
+                                            <button type="button" id="" class="button" v-on:click="submitMessage">
+                                                创建歌单
                                             </button>
                                         </fieldset>
                                     </div>
@@ -274,7 +243,14 @@
         el: "#app",
         data: {
             user: {},
-            songs: []
+            songs: [],
+            songListMessage: {
+                userId: '',
+                name: '',
+                description: '',
+                coverImgUrl: 'https://images.alphacoders.com/736/thumb-350-736461.png',
+                songs: []
+            }
         },
         created: function () {
             var id = "113568254";
@@ -300,7 +276,29 @@
                     console.log(error);
                 });
         },
-        methods: {}
+        methods: {
+            submitMessage: function () {
+                var songId = document.getElementsByClassName("form-check-input");
+                var selectId = new Array();
+                for (var i = 0; i < songId.length; i++) {
+                    if (songId[i].checked) {
+                        selectId.push(songId[i].value);
+                    }
+                }
+                this.songListMessage.songs = selectId;
+                this.songListMessage.userId = this.user.id;
+                console.log(this.songListMessage);
+                axios.post('http://localhost:8080/songList', {
+                    songList: this.songListMessage
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        }
     });
 
 

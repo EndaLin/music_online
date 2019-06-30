@@ -1,5 +1,7 @@
 package com.dgut.music_online.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.dgut.music_online.domain.Detail;
 import com.dgut.music_online.domain.SongList;
 import com.dgut.music_online.domain.User;
@@ -18,10 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -56,6 +55,31 @@ public class SongListManagerController {
         detail.setDetail(map);
         return detail;
     }
+
+
+    @ApiOperation("创建歌单（前台）")
+    @PostMapping(value = "/songList")
+    public Detail getSongListById(@RequestBody String data) {
+        JSONObject message = (JSONObject) JSONObject.parseObject(data).get("songList");
+        SongList songList = new SongList();
+        songList.setId(Integer.valueOf((int)((System.currentTimeMillis() / 1000) % Integer.MAX_VALUE)));
+        songList.setCreatorId((message.getInteger("userId")));
+        songList.setName(message.getString("name"));
+        songList.setDescription(message.getString("description"));
+        songList.setCoverImgUrl(message.getString("coverImgUrl"));
+
+        Object[] objects = message.getJSONArray("songs").toArray();
+        Integer[] songId =  new Integer[objects.length];
+
+        for (int i = 0;i < objects.length;i++) {
+            songId[i] = Integer.valueOf((String) objects[i]);
+        }
+
+        songListManagerService.insertSongList(songList);
+        songListManagerService.insertSongIntoSongList(songList.getId(), songId);
+        return detail;
+    }
+
 
     @ApiOperation("创建歌单(后台)")
     @PostMapping(value = "/musicManage/setSongSheet")

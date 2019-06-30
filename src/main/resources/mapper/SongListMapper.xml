@@ -62,7 +62,7 @@
     </resultMap>
 
     <select id="getSongListById" parameterType="int" resultMap="songListResultMapById">
-         select songList.id, description, songList.name, coverImgUrl, songId, song.name as songName, song.url, type, creatorId, avatarUrl, signature, gender, userType
+         select songList.id, description, songList.name, coverImgUrl, songId, song.name as songName, song.url, type, creatorId, nickname, avatarUrl, signature, gender, userType
          from `schema`.songList, `schema`.songAndSongList, `schema`.song as song, `schema`.user
          where songList.id like #{id}
             and songList.id like  songAndSongList.songListId

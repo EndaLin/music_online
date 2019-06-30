@@ -1,7 +1,6 @@
 package com.dgut.music_online.service;
 
 import com.dgut.music_online.domain.SongList;
-import io.swagger.models.auth.In;
 
 import java.util.List;
 
@@ -12,9 +11,9 @@ public interface SongListManagerService {
     void insertSongList(SongList songList);
 
     /**
-     * 录入新歌曲到歌单中
+     * 批量录入新歌曲到歌单中
      */
-    void insertSongIntoSongList(Integer songListId, Integer songId);
+    void insertSongIntoSongList(Integer songListId, Integer[] songId);
 
     /**
      * 获取所有歌单信息
