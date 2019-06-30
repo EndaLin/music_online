@@ -1,6 +1,4 @@
 ﻿// MP3播放器及歌曲库js
-
-
 var myPlaylist = new jPlayerPlaylist({
         jPlayer: "#jquery_jplayer_N",
         cssSelectorAncestor: "#jp_container_N"
@@ -36,6 +34,14 @@ var myPlaylist = new jPlayerPlaylist({
         keyEnabled: true,
         audioFullScreen: true
     });
+
+//获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]);
+    return null; //返回参数值
+}
 
 var vm = new Vue({
     el: "#app",
@@ -172,14 +178,20 @@ var reg = new Vue({
     }
 });
 var sl_songs = new Vue({
-    el: "#app",
+    el: "#songList",
     data: {
         songList: '',
         listSong: [],
-        creator: {}
+        cur: 1,
+        all: 8,
+        limit:10,
+        url: ''
+    },
+    components:{
+        'vue-nav': Vnav
     },
     created: function () {
-        var id = getUrlParam("id");alert(id);
+        var id = getUrlParam("id");
         axios.get('http://localhost:8080/songList/' + id)
             .then(function (response) {
                 console.log(response);
@@ -187,7 +199,8 @@ var sl_songs = new Vue({
                 if (sl_songs.songList.listSong != null) {
                     sl_songs.listSong = sl_songs.songList.listSong;
                 }
-                sl_songs.creator = sl_songs.songList.user;
+                sl_songs.all = Math.ceil(sl_songs.listSong.length / sl_songs.limit);
+                //vm.creator = vm.songList.user;
                 console.log(sl_songs.listSong);
             })
             .catch(function (error) {
@@ -195,6 +208,10 @@ var sl_songs = new Vue({
             });
     },
     methods: {
+        callback: function(data){
+            this.cur = data;
+            alert(data);
+        },
         playMusic: function (obj) {
             myPlaylist.add({
                 title: obj.name, artist: "在线音乐平台开发小组",

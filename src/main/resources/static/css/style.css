@@ -1258,7 +1258,7 @@ nav.fixed ul .search_box .hot_search>div.open {
 	height: 332px;
 	background: none;
 	background: rgba(56, 42, 42, 0.4);
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 .new_mv_title {
@@ -1564,7 +1564,7 @@ nav.fixed ul .search_box .hot_search>div.open {
 	background-size: cover;
 	/* overflow: hidden; */
 	box-shadow: 0px 2px 4px #c5c5c5;
-	/*overflow: auto;*/
+	overflow-x:hidden;
 }
 
 
@@ -2082,25 +2082,30 @@ ul.rcmd_cont li i.third_place {
 	background-color: #1f16164a;
 	border: 3px solid grey;
 }
+.sl_left_title {
+	width: 300px;
+	float: left;
+	background: #35303073;
+	box-shadow: 0px 1px 2px #c5c5c5;
+	line-height: 55px;
+}
+.sl_left_title span {
+	width: 270px;
+}
+.sl_left_name {
+	height: 50px;
+}
+.sl_left_dec {
+	height: 330px;
+}
 .sl_left p{
 	line-height: 35px;
-	font-size: 12px;
-	color: #333;
+	font-size: 18px;
+	color: greenyellow;
 	font-family: Arial, Helvetica, sans-serif;
 	-webkit-text-size-adjust: none;
 	color: #0c73c2;
-	margin-right: 30px;
-}
-.sl_left_name {
-	line-height: 24px;
-	font-size: 20px;
-	font-weight: normal;
-	word-wrap: break-word;
-	word-break: break-word;
-	white-space: normal;
-	font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
-	color: #333;
-	-webkit-text-size-adjust: none;
+	text-indent:25px;
 }
 .sl_right {
 	position: absolute;
@@ -2109,4 +2114,8 @@ ul.rcmd_cont li i.third_place {
 }
 .sl_right_songs {
 	height: 578px;
+	position: relative;
+}
+.s_show{
+	height: 117%;
 }
