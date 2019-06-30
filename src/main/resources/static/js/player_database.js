@@ -104,6 +104,9 @@ var sl = new Vue({
     methods: {
         callback: function(data){
             this.cur = data;
+        },
+        songListMessage: function (obj) {
+            window.location.href="songList.html?id=" + obj.id;
         }
     },
     created: function(){

@@ -64,7 +64,7 @@
                 <a href="" class="more">/more</a>
             </div>
         </div>
-        <div class="songs_rcmd" id="songs_rcmd">
+        <div class="songs_rcmd sl_right_songs" id="songs_rcmd">
             <div class="songs_rcmd_cont">
                 <ul class="rcmd_cont" id="latest">
                     <li v-for="(song, index) in listSong">
@@ -213,7 +213,7 @@
             //creator: {}
         },
         created: function () {
-            var id = getUrlParam("id");alert(id);
+            var id = getUrlParam("id");
             axios.get('http://localhost:8080/songList/' + id)
                 .then(function (response) {
                     console.log(response);
