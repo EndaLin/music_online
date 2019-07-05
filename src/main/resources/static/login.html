@@ -35,8 +35,8 @@
 		methods: {
             submitMessage: function () {
                 var param = new URLSearchParams();
-                param.append("username", this.username);
-                param.append("password", this.password);
+                param.append("username", app.username);
+                param.append("password", app.password);
 				axios.post('http://localhost:8080/userManage/login', param)
 						.then(function (response) {
 							console.log(response.data);
