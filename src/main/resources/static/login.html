@@ -6,23 +6,57 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" href="css/user/normal.css">
 <link rel="stylesheet" href="css/user/login.css">
-<script src="js/prefixfree.min.js"></script>
+
 </head>
 
 <body>
 
-<div class="login" id="login">
+<div class="login" id="app">
 	<h1>平台登陆</h1>
-	<form method="post">
-		<input v-modle="nickname" type="text" name="nickname" placeholder="用户名" required="required" />
-		<input v-modle="password" type="password" name="password" placeholder="密码" required="required" />
-		<button type="submit" class="btn btn-primary btn-block btn-large" @click="submit">登录</button>
-	</form>
+	<div>
+		<input type="text" name="" placeholder="用户名" required="required" v-model="username"/>
+		<input type="password" name="" placeholder="密码" required="required" v-model="password"/>
+		<button type="button" class="btn btn-primary btn-block btn-large" v-on:click="submitMessage">登录</button>
+        <strong style="color: red;">{{error}}</strong>
+	</div>
 </div>
-
 <!--引入Vue-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="js/player_database.js"></script>
+<script src="js/user.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: "#app",
+		data: {
+			username: "",
+			password: "",
+            error: ""
+		},
+		methods: {
+            submitMessage: function () {
+                var param = new URLSearchParams();
+                param.append("username", this.username);
+                param.append("password", this.password);
+				axios.post('http://localhost:8080/userManage/login', param)
+						.then(function (response) {
+							console.log(response.data);
+							if (response.data.code != 200) {
+							    this.error = response.data.message;
+                            } else {
+							    console.log(response.data.detail.user.id);
+							    login(response.data.detail.user.id);
+							    window.location.href = "index.html";
+                            }
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+			}
+		},
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+	})
+</script>
 </body>
 </html>

@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="left-image">
-                                <img v-bind:src="songList.coverImgUrl" alt=""/>
+                                <img v-bind:href="songList.coverImgUrl" alt=""/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -77,7 +77,7 @@
                                     {{songList.description}}
                                 </p>
                                 <div class="white-button">
-                                    <a href="#">查看歌单信息</a>
+
                                 </div>
                             </div>
                         </div>
@@ -250,10 +250,12 @@
                 description: '',
                 coverImgUrl: 'https://images.alphacoders.com/736/thumb-350-736461.png',
                 songs: []
-            }
+            },
+            url: ""
         },
         created: function () {
-            var id = "113568254";
+            var id = getUrlParam("id");
+            this.url = "songList.html?id=" + id;
             axios.get('http://localhost:8080/userManage/' + id)
                 .then(function (response) {
                     console.log(response);
@@ -293,12 +295,16 @@
                 })
                     .then(function (response) {
                         console.log(response);
+                        location.reload();
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
             }
-        }
+        },
+        songListMessage: function (obj) {
+            window.location.href = "songList.html?id=" + obj.id;
+        },
     });
 
 

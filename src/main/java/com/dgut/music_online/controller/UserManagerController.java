@@ -32,7 +32,7 @@ public class UserManagerController {
     @Autowired
     private UserManagerService userManagerService;
 
-    @ApiOperation("用户登陆管理（后台）")
+    @ApiOperation("用户登陆")
     @PostMapping("/userManage/login")
     public Detail loginManager(@RequestParam("username")Integer username, @RequestParam("password")String password, HttpServletRequest request){
 
@@ -44,7 +44,7 @@ public class UserManagerController {
             Map map = new HashMap<>();
             map.put("user", user);
             detail.setDetail(map);
-//            request.getSession().setAttribute("user", user);
+            detail.setMessage("success");
             request.setAttribute("user", user);
         }else {
             detail.setMessage("密码错误!");
