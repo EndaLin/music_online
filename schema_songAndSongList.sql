@@ -1,0 +1,13 @@
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (28561008, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (22722832, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (252479, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (4899152, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (4974240, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (22681955, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (849739, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (35504049, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (732206, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (460500, 309390784);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (460500, 1561888645);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (732206, 1562318662);
+INSERT INTO `schema`.songAndSongList (songId, songListId) VALUES (4899152, 1562318662);

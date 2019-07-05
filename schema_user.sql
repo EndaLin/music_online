@@ -1,0 +1,3 @@
+INSERT INTO `schema`.user (id, nickname, avatarUrl, signature, gender, userType, password, audit) VALUES (113568254, 'CeuiLiSA', 'https://p1.music.126.net/9BSnF5WgYnnBjIqi2aLm-w==/19085322835203895.jpg', '肥宅，腿控，御姐控，救老婆，真正的粉丝，只土不豪，约，爱过，不是很懂你们二次元 ( • ̀ω•́ )✧', 1, 0, '123456', 0);
+INSERT INTO `schema`.user (id, nickname, avatarUrl, signature, gender, userType, password, audit) VALUES (113568257, 'jack', null, 'asdf', 1, 1, '123456', 1);
+INSERT INTO `schema`.user (id, nickname, avatarUrl, signature, gender, userType, password, audit) VALUES (113568258, 'jum', null, 'sdfadgb', 1, 1, '123456', 0);

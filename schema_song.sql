@@ -1,0 +1,12 @@
+INSERT INTO `schema`.song (id, type, url, name) VALUES (460500, 'mp3', 'http://music.163.com/song/media/outer/url?id=533079474.mp3', 'Fleur de lis');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (732206, 'mp3', 'http://music.163.com/song/media/outer/url?id=518291899.mp3', 'Dance, cherry blossoms!');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (849739, 'mp3', 'http://music.163.com/song/media/outer/url?id=521597063.mp3', 'Lost in LoveFleur de lis');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (4899152, 'mp3', 'http://music.163.com/song/media/outer/url?id=357185.mp3', '远すぎた空');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (4974240, 'mp3', 'http://music.163.com/song/media/outer/url?id=515384791.mp3', 'Whether');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (22722832, 'mp3', 'http://music.163.com/song/media/outer/url?id=28914253.mp3', 'Constellation Of Tatyana');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (28561008, 'mp3', 'http://music.163.com/song/media/outer/url?id=357023.mp3', 'Princess');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (35504049, 'mp3', 'http://music.163.com/song/media/outer/url?id=27579054.mp3', 'Day by Day');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (35504054, 'mp3', 'http://music.163.com/song/media/outer/url?id=803347.mp3', 'blue blossoms');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (35504055, 'mp3', 'http://localhost:8080/songs/8658055bfd854cee9907b4ab2244bd78.mp3', '石头 - 雨花石');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (35504056, 'mp3', 'http://localhost:8080/songs/439dafacee26446a96bb043a6068d697.mp3', '舒淇 - 一生所爱 (国语)');
+INSERT INTO `schema`.song (id, type, url, name) VALUES (35504057, 'mp3', 'http://localhost:8080/songs/a7ea98836d1649ca97d2854010bb56a6.mp3', '王力宏 _ 卢巧音 - 好心分手');
